@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => 'homes#top'
     get 'about' => 'homes#about'
+    get 'customers/my_page', to: 'customers#show'
+    get 'customers/profile', to: 'customers#edit'
+    patch 'customers/profile', to: 'customers#update'
+    get 'customers/unsubscribe', to: 'customers#unsubscribe'
+    patch 'customers/withdraw', to: 'customers#withdraw'
     resources :posts, only: [:create, :index, :show, :edit, :update, :destroy] do
       resources :post_comment, only: [:create, :edit, :update, :destroy]
     end
