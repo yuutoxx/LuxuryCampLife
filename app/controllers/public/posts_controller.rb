@@ -6,7 +6,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      redirect_to book_path(@post), notice: "You have created post successfully."
+      redirect_to post_path(@post), notice: "You have created post successfully."
     else
       @posts = post.all
       render 'index'
@@ -27,8 +27,8 @@ class Public::PostsController < ApplicationController
   end
 
   def update
-    if @book.update(book_params)
-      redirect_to book_path(@book), notice: "You have updated book successfully."
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: "You have updated book successfully."
     else
       render "edit"
     end
@@ -47,7 +47,7 @@ class Public::PostsController < ApplicationController
 
   def ensure_correct_customer
     @post = Post.find(params[:id])
-    unless @post.user == current_customer
+    unless @post.customer == current_customer
       redirect_to posts_path
     end
   end
