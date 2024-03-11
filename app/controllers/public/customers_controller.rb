@@ -1,6 +1,8 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
   def show
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
+    @posts = @customer.posts
   end
 
   def edit
@@ -30,6 +32,6 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :introduction, :email)
+    params.require(:customer).permit(:name, :introduction, :email, :profile_image)
   end
 end

@@ -8,14 +8,15 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "You have created post successfully."
     else
-      @posts = post.all
+      @posts = Post.all
       render 'index'
     end
   end
 
   def index
     @post = Post.new
-    @possts = Post.all
+    @posts = Post.all
+    @customer
   end
 
   def show
@@ -42,7 +43,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image, :price)
   end
 
   def ensure_correct_customer

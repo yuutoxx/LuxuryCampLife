@@ -53,12 +53,12 @@ ActiveRecord::Schema.define(version: 2024_03_08_012643) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
     t.text "introduction"
     t.boolean "is_active", default: true
     t.datetime "created_at", precision: 6, null: false
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 2024_03_08_012643) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
+    t.integer "price"
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -86,7 +88,6 @@ ActiveRecord::Schema.define(version: 2024_03_08_012643) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

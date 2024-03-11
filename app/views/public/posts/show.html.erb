@@ -1,0 +1,30 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-2'>
+      <div class='card'>
+        <div class='card-body'>
+          <div>
+            <%= link_to posts_path do %>
+              <i class="fa-solid fa-arrow-left mb-4 text-dark"><span class='ml-4'>ポストする</span></i>
+            <% end %>
+          </div>
+          <div class='d-flex flex-row'>
+            <%= link_to customer_path(@post) do %>
+              <%= image_tag @post.customer.get_profile_image(50,50), class: 'rounded-circle' %>
+            <% end %>
+            <h5 class='pl-3'><%= @post.customer.name %></h5>
+          </div>
+          <div class='d-flex flex-row offset-md-1 pl-2'>
+            <div class='img-container pr-3'><%= image_tag @post.get_image(800,800) %></div>
+            <div>
+              <p><%= @post.title %></p>
+              <p><%= @post.body %></p>
+              <p>¥<%= @post.add_tax_price.to_s(:delimited) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2>以下コメント</h2>
+    </div>
+  </div>
+</div>

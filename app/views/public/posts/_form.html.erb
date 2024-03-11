@@ -1,0 +1,23 @@
+<%= form_with model:post,local:true do |f| %>
+  <div class='form-group'>
+    <%= f.label :プロフィール画像 %>
+    <%= f.file_field :image, class: 'form-control-file image', accept: 'image/*' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control post_title' %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :opinion %>
+    <%= f.text_area :body, class: 'form-control post_body' %>
+  </div>
+  <div class='form-group'>
+    <%=f.label:税抜価格 %>
+    <div class='d-flex'>
+    <%=f.text_field :price, class: 'form-control post_price', placeholder:'1000' %><h6 class='p-2'>円</h6>
+    </div>
+  </div>
+  <div class='form-group'>
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>
