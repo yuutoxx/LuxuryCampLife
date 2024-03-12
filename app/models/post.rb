@@ -5,6 +5,13 @@ class Post < ApplicationRecord
   #has_many :post_comments, dependent :destroy
   has_one_attached :image
 
+  with_options presence: true do
+    validates :title
+    validates :body
+    validates :price
+    validates :image
+  end
+
   def get_post_image(width,height)
     image.variant(resize_to_limit: [width,height]).processed
   end

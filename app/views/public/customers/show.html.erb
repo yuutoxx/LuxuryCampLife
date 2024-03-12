@@ -25,11 +25,11 @@
       </div>
     </div>
   </div>
-  <% if @post %>
+  <% if @customer.posts %>
     <h2>ポスト</h2>
   <div class='row'>
     <div class='col-md-8 offset-md-2'>
-    <% @posts.each do |post| %>
+    <% @customer.posts.each do |post| %>
       <div class='card'>
         <div class='card-body'>
           <div class='d-flex flex-row'>
@@ -43,7 +43,7 @@
             <div>
               <p><%= link_to post.title,post %></p>
               <p><%= post.body %></p>
-              <p><i class="fa-regular fa-comment-dots"></i><i class="fa-solid fa-gear" style="color: #008f64;"></i><i class="fa-regular fa-trash-can" style="color: #ff0000;"></i></p>
+              <p><i class="fa-regular fa-comment-dots"></i></p>
               <p>¥<%= post.add_tax_price.to_s(:delimited) %></p>
             </div>
           </div>

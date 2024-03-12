@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_customer, only: [:show, :edit, :update, :destroy]
 
   def create
     @post = Post.new(post_params)
@@ -16,13 +16,12 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @post = Post.new
+    @post_new = Post.new
     @posts = Post.all
     @tag_list = Tag.all
   end
 
   def show
-    @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join('、')
     @post_tags = @post.tags
     @post_comment = PostComment.new
@@ -45,8 +44,6 @@ class Public::PostsController < ApplicationController
   end
 
   def search_tag
-    #検索結果画面でもタグ一覧表示
-    @tag_list = Tag.all
     #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
@@ -56,7 +53,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :price)
+    params.require(:post).permit(:title, :body, :image, :price, :star)
   end
 
   def ensure_correct_customer
