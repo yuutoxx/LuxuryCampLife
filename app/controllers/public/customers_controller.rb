@@ -10,15 +10,16 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    @customer = Customer.find(current_customer.id)
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to customers_my_page_path
+      redirect_to customer_path(@customer)
     else
       render :edit
     end
   end
 
   def unsubscribe
+    @customer = current_customer
   end
 
   def withdraw
