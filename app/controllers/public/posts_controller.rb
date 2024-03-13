@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_correct_customer, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def create
     @post = Post.new(post_params)
@@ -22,6 +22,7 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:name).join('、')
     @post_tags = @post.tags
     @post_comment = PostComment.new

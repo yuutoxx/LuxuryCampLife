@@ -16,10 +16,10 @@
         <div>
           <p><%= post.title %></p>
           <p><%= post.body %></p>
-          <div class='d-flex flex-row'>
+          <div class='d-flex flex-row mb-3'>
             <p><%= render 'static_rate', post: post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= post.post_comments.count %></p>
           </div>
-          <p>¥<%= post.add_tax_price.to_s(:delimited) %></p>
+          <p>¥<%= post.price.to_s(:delimited) %></p>
         </div>
       </div>
     </div>

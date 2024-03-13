@@ -16,10 +16,6 @@ class Post < ApplicationRecord
     image.variant(resize_to_limit: [width,height]).processed
   end
 
-  def add_tax_price
-    (self.price * 1.10).round
-  end
-
   def save_tags(tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?

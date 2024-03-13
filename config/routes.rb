@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'homes/top'
+  end
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+  end
+  namespace :admin do
+    get 'posts/index'
+    get 'posts/show'
+  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords] ,controllers: {

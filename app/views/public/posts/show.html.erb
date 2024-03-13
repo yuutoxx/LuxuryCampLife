@@ -5,7 +5,7 @@
         <div class='card-body'>
           <div>
             <%= link_to posts_path do %>
-              <i class="fa-solid fa-arrow-left mb-4 text-dark"><span class='ml-4'>ポストする</span></i>
+              <i class="fa-solid fa-arrow-left mb-4 text-dark"><span class='ml-4'>投稿する</span></i>
             <% end %>
           </div>
           <div class='d-flex flex-row'>
@@ -15,20 +15,24 @@
             <h5 class='flex-grow-1 pl-3'>
               <%= @post.customer.name %>
             </h5>
-            <%= link_to edit_post_path(@post) do %>
-              <i class="fa-solid fa-gear fa-xl p-2" style="color: #008f64;"></i>
-            <% end %>
-            <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' } do %>
-              <i class="fa-regular fa-trash-can fa-xl p-2" style="color: #ff0000;"></i>
+            <% if @post.customer == current_customer %>
+              <%= link_to edit_post_path(@post) do %>
+                <i class="fa-solid fa-gear fa-xl p-2" style="color: #008f64;"></i>
+              <% end %>
+              <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' } do %>
+                <i class="fa-regular fa-trash-can fa-xl p-2" style="color: #ff0000;"></i>
+              <% end %>
             <% end %>
           </div>
           <div class='d-flex flex-row offset-md-1 pl-2'>
             <div class='img-container pr-3'><%= image_tag @post.get_post_image(800,800) %></div>
             <div>
               <p><%= @post.title %></p>
-              <p><%= @post.body %></p>
-              <p><%= render "static_rate", post: @post %></p>
-              <p>¥<%= @post.add_tax_price.to_s(:delimited) %></p>
+              <p class='w-75'><%= @post.body %></p>
+              <div class='d-flex flex-row'>
+                <p><%= render "static_rate", post: @post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= @post.post_comments.count %></p>
+              </div>
+              <p>¥<%= @post.price.to_s(:delimited) %></p>
               <!--タグリスト-->
               <% @post_tags.each do |tag| %>
                 <i class="fa-sharp fa-solid fa-tag"></i>
@@ -44,7 +48,7 @@
         <div class='form-group'>
           <%= f.text_area :comment, rows: '3', placeholder: "コメント", class: 'form-control post_comment' %>
           <div class='d-flex flex-row-reverse'>
-            <%= f.submit "送信",　type: 'button', class: 'btn btn-outline-primary col-sm-3 m-2' %>
+            <%= f.submit "送信",　type: 'button', class: 'btn btn-outline-success col-sm-3 m-2' %>
           </div>
         </div>
         <% end %>
@@ -61,13 +65,16 @@
                 <h5 class='flex-grow-1 pl-3'>
                   <%= post_comment.customer.name %>
                 </h5>
-                <%#= link_to post_post_comment_path, method: :delete, data: { confirm: '本当に消しますか？' } do %>
-                  <i class="fa-regular fa-trash-can fa-xl p-2" style="color: #ff0000;"></i>
-                <%# end %>
+                <% if post_comment.customer == current_customer %>
+                  <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: '本当に消しますか？' } do %>
+                    <i class="fa-regular fa-trash-can fa-xl p-2" style="color: #ff0000;"></i>
+                  <% end %>
+                <% end %>
               </div>
-              <p class='offset-md-1 pl-2'>
-                <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>
-              </p>
+              <div>
+                <p class='offset-md-1 w-75'><%= post_comment.comment %></p>
+                <p class='text-right mr-4'><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
+              </div>
             </div>
           </div>
         <% end %>
