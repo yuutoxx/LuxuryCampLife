@@ -5,7 +5,7 @@
         <%= link_to customer_path(post) do %>
           <%= image_tag post.customer.get_profile_image(50,50), class: 'rounded-circle' %>
         <% end %>
-        <h5 class='pl-3'><%= post.customer.name %></h5>
+        <h5 class='ml-3'><%= post.customer.name %></h5>
       </div>
       <div class='d-flex flex-row offset-md-1 pl-2'>
         <div class='img-container pr-3'>
@@ -17,7 +17,7 @@
           <p><%= post.title %></p>
           <p><%= post.body %></p>
           <div class='d-flex flex-row'>
-            <p><%= render 'static_rate', post: post %><i class="fa-regular fa-comment-dots pl-3 pt-1"></i></p>
+            <p><%= render 'static_rate', post: post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= post.post_comments.count %></p>
           </div>
           <p>¥<%= post.add_tax_price.to_s(:delimited) %></p>
         </div>

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
     get 'search_tag' => 'posts#search_tag'
     resources :posts, only: [:create, :index, :show, :edit, :update, :destroy] do
-      resources :post_comment, only: [:create, :edit, :update, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
   end
 end

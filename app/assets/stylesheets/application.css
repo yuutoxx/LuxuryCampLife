@@ -12,3 +12,26 @@
 .underline {
   text-decoration: underline dotted green;
 }
+
+.custom-link{
+  text-decoration: none !important;
+  position: relative;
+  display: inline-block;
+  transition: .3s;
+}
+
+.custom-link::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  content: '';
+  width: 0;
+  height: 2px;
+  background-color: #97B387;
+  transition: .3s;
+  transform: translateX(-50%);
+}
+
+.custom-link:hover::after{
+  width: 100%;
+}

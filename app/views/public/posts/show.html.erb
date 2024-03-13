@@ -38,7 +38,40 @@
           </div>
         </div>
       </div>
-      <h2>以下コメント</h2>
+      <!--コメント-->
+      <div class='my-4'>
+        <%= form_with model: [@post, @post_comment] do |f| %>
+        <div class='form-group'>
+          <%= f.text_area :comment, rows: '3', placeholder: "コメント", class: 'form-control post_comment' %>
+          <div class='d-flex flex-row-reverse'>
+            <%= f.submit "送信",　type: 'button', class: 'btn btn-outline-primary col-sm-3 m-2' %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <!--コメント一覧-->
+      <div>
+        <% @post.post_comments.each do |post_comment| %>
+          <div class='card'>
+            <div class='card-body'>
+              <div class='d-flex flex-row'>
+                <%= link_to customer_path(@post) do %>
+                  <%= image_tag post_comment.customer.get_profile_image(50,50), class: 'rounded-circle' %>
+                <% end %>
+                <h5 class='flex-grow-1 pl-3'>
+                  <%= post_comment.customer.name %>
+                </h5>
+                <%#= link_to post_post_comment_path, method: :delete, data: { confirm: '本当に消しますか？' } do %>
+                  <i class="fa-regular fa-trash-can fa-xl p-2" style="color: #ff0000;"></i>
+                <%# end %>
+              </div>
+              <p class='offset-md-1 pl-2'>
+                <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
