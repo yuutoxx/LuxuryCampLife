@@ -7,8 +7,8 @@
         <% end %>
         <h5 class='ml-3'><%= post.customer.name %></h5>
       </div>
-      <div class='d-flex flex-row offset-md-1 pl-2'>
-        <div class='img-container pr-3'>
+      <div class='d-flex flex-row offset-md-1'>
+        <div class='img-container mr-3'>
           <%= link_to post_path(post) do %>
             <%= image_tag post.get_post_image(800,800) %>
           <% end %>

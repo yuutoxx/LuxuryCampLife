@@ -26,7 +26,7 @@
   </div>
   <% if @customer.posts %>
     <div class='row'>
-      <div class='col-md-8 offset-md-2'>
+      <div class='col-md-8 offset-md-2 p-0'>
       <% @customer.posts.each do |post| %>
         <div class='card'>
           <div class='card-body'>
@@ -34,10 +34,10 @@
               <%= link_to customer_path(post) do %>
                 <%= image_tag post.customer.get_profile_image(50,50), class: 'rounded-circle' %>
               <% end %>
-              <h5 class='pl-3'><%= post.customer.name %></h5>
+              <h5 class='ml-3'><%= post.customer.name %></h5>
             </div>
-            <div class='d-flex flex-row offset-md-1 pl-2'>
-              <div class='img-container pr-3'>
+            <div class='d-flex flex-row offset-md-1'>
+              <div class='img-container ml-2 mr-3'>
                 <%= link_to post_path(post) do %>
                   <%= image_tag post.get_post_image(800,800) %>
                 <% end %>

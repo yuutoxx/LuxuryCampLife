@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-8 offset-md-2'>
+    <div class='col-md-8 offset-md-2 p-0'>
       <div class='card'>
         <div class='card-body'>
           <div>
@@ -12,9 +12,7 @@
             <%= link_to customer_path(@post) do %>
               <%= image_tag @post.customer.get_profile_image(50,50), class: 'rounded-circle' %>
             <% end %>
-            <h5 class='flex-grow-1 pl-3'>
-              <%= @post.customer.name %>
-            </h5>
+            <h5 class='flex-grow-1 ml-3'><%= @post.customer.name %></h5>
             <% if @post.customer == current_customer %>
               <%= link_to edit_post_path(@post) do %>
                 <i class="fa-solid fa-gear fa-xl p-2" style="color: #008f64;"></i>
@@ -24,11 +22,13 @@
               <% end %>
             <% end %>
           </div>
-          <div class='d-flex flex-row offset-md-1 pl-2'>
-            <div class='img-container pr-3'><%= image_tag @post.get_post_image(800,800) %></div>
+          <div class='d-flex flex-row offset-md-1'>
+            <div class='img-container ml-2 mr-3'>
+              <%= image_tag @post.get_post_image(800,800) %>
+            </div>
             <div>
               <p><%= @post.title %></p>
-              <p class='w-75'><%= @post.body %></p>
+              <p><%= @post.body %></p>
               <div class='d-flex flex-row mb-3'>
                 <p><%= render "static_rate", post: @post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= @post.post_comments.count %></p>
               </div>

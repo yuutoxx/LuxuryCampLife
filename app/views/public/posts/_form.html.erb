@@ -1,4 +1,5 @@
-<%= form_with model:post,local:true do |f| %>
+<%#プレビュー画像を表示させる設定→<div id="previews"></div>で指定%>
+<%= form_with model: post, id: 'new_post', local:true do |f| %>
   <div class='form-group'>
     <%= f.label :タイトル %>
     <%= f.text_field :title, class: 'form-control post_title', placeholder: 'テント' %>
@@ -8,10 +9,14 @@
     <%= f.text_area :body, rows: '5', class: 'form-control post_body', placeholder: '使用感など' %>
   </div>
   <div class='form-group'>
-    <label class='form-image fa-x'>
-      <span class='image-file'><i class="fa-regular fa-image"></i>画像選択</span>
-      <input type='file' class='hidden' style='display: none;'>
-    </label>
+    <div class="image-field">
+      <%= f.file_field :image %>
+      <label class='form-image'>
+        <span class='image-file'><i class="fa-regular fa-image mr-2"></i>画像選択</span>
+        <input type='file' id='new_post' class='hidden' style='display: none;'>
+      </label>
+      <div id="previews"></div>
+    </div>
   </div>
   <% if post.id.nil? %>
     <div class='form-group' id='star'>
