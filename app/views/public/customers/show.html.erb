@@ -30,7 +30,7 @@
       <% @customer.posts.each do |post| %>
         <div class='card'>
           <div class='card-body'>
-            <div class='d-flex flex-row'>
+            <div class='d-flex flex-row mb-2'>
               <%= link_to customer_path(post) do %>
                 <%= image_tag post.customer.get_profile_image(50,50), class: 'rounded-circle' %>
               <% end %>
@@ -45,7 +45,7 @@
               <div>
                 <p><%= post.title %></p>
                 <p class='w-75'><%= post.body %></p>
-                <div class='d-flex flex-row'>
+                <div class='d-flex flex-row mb-3'>
                   <p><%= render 'public/posts/static_rate', post: post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= post.post_comments.count %></p>
                 </div>
                 <p>¥<%= post.price.to_s(:delimited) %></p>
