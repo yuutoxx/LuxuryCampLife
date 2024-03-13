@@ -16,7 +16,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @post_new = Post.new
+    @post = Post.new
     @posts = Post.all
     @tag_list = Tag.all
   end

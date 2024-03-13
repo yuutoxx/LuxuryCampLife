@@ -4,6 +4,6 @@
     	<%#= render 'layouts/errors', obj: @book %>
   		<%= render 'form', post: @post %>
   		<%= link_to '詳細', @post %> |
-  		<%= link_to '一覧', posts_path %>
+  		<%= link_to '一覧', posts_path, data: {"turbolinks" => false} %>
   </div>
 </div>

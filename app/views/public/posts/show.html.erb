@@ -4,7 +4,7 @@
       <div class='card'>
         <div class='card-body'>
           <div>
-            <%= link_to posts_path do %>
+            <%= link_to posts_path, data: {"turbolinks" => false} do %>
               <i class="fa-solid fa-arrow-left mb-4 text-dark"><span class='ml-4'>投稿する</span></i>
             <% end %>
           </div>
@@ -14,7 +14,7 @@
             <% end %>
             <h5 class='flex-grow-1 ml-3'><%= @post.customer.name %></h5>
             <% if @post.customer == current_customer %>
-              <%= link_to edit_post_path(@post) do %>
+              <%= link_to edit_post_path(@post), data: {"turbolinks" => false} do %>
                 <i class="fa-solid fa-gear fa-xl p-2" style="color: #008f64;"></i>
               <% end %>
               <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' } do %>

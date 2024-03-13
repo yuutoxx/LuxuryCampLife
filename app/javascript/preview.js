@@ -3,21 +3,12 @@
 
 document.addEventListener('DOMContentLoaded', function(){
   // 新規投稿・編集ページのフォームを取得
-  const postForm = document.getElementById('new_post'); //form_withのid
-  // プレビューを表示するためのスペースを取得
-  const previewList = document.getElementById('previews'); //プレビュー画像を表示する場所を追加したid
-  // 新規投稿・編集ページのフォームがないならここで終了。「!」は論理否定演算子。
-  if (!postForm) return null;
-  console.log("preview.jsが読み込まれました");
-});
-
-document.addEventListener('DOMContentLoaded', function(){
-  // 新規投稿・編集ページのフォームを取得
-  const postForm = document.getElementById('new_post');
+  const postForm = document.getElementById('post_img');
   // プレビューを表示するためのスペースを取得
   const previewList = document.getElementById('previews');
   // 新規投稿・編集ページのフォームがないならここで終了。「!」は論理否定演算子。
   if (!postForm) return null;
+  console.log("preview.jsが読み込まれました");
 
   // input要素を取得。name情報は検証ツールから確認すること！！
   const fileField = document.querySelector('input[type="file"][name="post[image]"]');
@@ -45,4 +36,3 @@ document.addEventListener('DOMContentLoaded', function(){
   previewList.appendChild(previewWrapper);
   });
 });
-
