@@ -30,7 +30,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root :to => 'homes#top'
     get 'search_tag' => 'posts#search_tag'
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
     resources :customers, only: [:index, :show, :edit, :update]
   end
 end

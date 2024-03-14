@@ -13,7 +13,7 @@
               <%= image_tag @post.customer.get_image(1000,1000), class: 'image-container rounded-circle' %>
             <% end %>
             <h5 class='flex-grow-1 ml-3'><%= @post.customer.name %></h5>
-            <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' } do %>
+            <%= link_to admin_post_path, method: :delete, data: { confirm: '本当に消しますか？' } do %>
               <i class="fa-regular fa-trash-can fa-xl p-2" style="color: #ff0000;"></i>
             <% end %>
           </div>
@@ -49,7 +49,7 @@
                 <h5 class='flex-grow-1 pl-3'>
                   <%= post_comment.customer.name %>
                 </h5>
-                <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: '本当に消しますか？' } do %>
+                <%= link_to admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: '本当に消しますか？' } do %>
                   <i class="fa-regular fa-trash-can fa-xl p-2" style="color: #ff0000;"></i>
                 <% end %>
               </div>
