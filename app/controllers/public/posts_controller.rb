@@ -23,7 +23,6 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @tag_list = @post.tags.pluck(:name).join('、')
     @post_tags = @post.tags
     @post_comment = PostComment.new
   end
@@ -33,7 +32,7 @@ class Public::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "You have updated book successfully."
+      redirect_to post_path(@post), notice: "You have updated post successfully."
     else
       render "edit"
     end
@@ -49,6 +48,7 @@ class Public::PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
     @posts= @tag.posts
+    @tag_list = Tag.all
   end
 
   private

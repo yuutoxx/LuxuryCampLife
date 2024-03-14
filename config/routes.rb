@@ -1,15 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-  end
-  namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
-  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords] ,controllers: {
@@ -36,5 +25,12 @@ Rails.application.routes.draw do
     resources :posts, only: [:create, :index, :show, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]
     end
+  end
+
+  namespace :admin do
+    root :to => 'homes#top'
+    get 'search_tag' => 'posts#search_tag'
+    resources :posts, only: [:index, :show, :destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 end
