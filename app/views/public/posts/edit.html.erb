@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-4">
     	<%#= render 'layouts/errors', obj: @book %>
   		<%= render 'form', post: @post %>
-  		<%= link_to '詳細', @post %> |
-  		<%= link_to '一覧', posts_path, data: {"turbolinks" => false} %>
+  		<%= link_to '詳細', @post, class:'custom-link text-secondary ml-2' %> |
+  		<%= link_to '一覧', posts_path, class:'custom-link text-secondary', data: {"turbolinks" => false} %>
   </div>
 </div>

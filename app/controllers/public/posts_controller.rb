@@ -18,10 +18,8 @@ class Public::PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.all.order(params[:sort])
     @tag_list = Tag.all
-    @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
   end
 
   def show
@@ -62,7 +60,7 @@ class Public::PostsController < ApplicationController
 
   def set_search
     @q = Post.ransack(params[:q])
-    @posts = @q.result
+    @posts = @q.result(distinct: true)
   end
 
   def ensure_correct_customer

@@ -38,7 +38,7 @@
   content: '';
   width: 0;
   height: 2px;
-  background-color: #97B387;
+  background-color: #00FFFF;
   transition: .3s;
   transform: translateX(-50%);
 }

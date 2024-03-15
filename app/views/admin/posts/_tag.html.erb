@@ -1,7 +1,7 @@
 <h4 class='text-center mt-2'>タグ検索</h4>
 <!--タグリスト-->
 <% tag_list.each do |list| %>
-  <i class="fa-sharp fa-solid fa-tag"></i>
-  <%= link_to list.name,admin_search_tag_path(tag_id: list.id) %>
+  <i class="fa-solid fa-tag" style="color: #B197FC;"></i>
+  <%= link_to list.name,admin_search_tag_path(tag_id: list.id), class:'custom-link text-secondary' %>
   <%= "(#{list.posts.count})" %>
 <% end %>

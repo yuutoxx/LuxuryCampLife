@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="container">
+    <div class="post-contents">
+      <div class="d-flex">
+        <h2 class="post-contents-title m-2">検索結果</h2>
+        <div class="col-md-6 offset-md-1">
+          <%= render 'seach', q: @q %>
+        </div>
+      </div>
+      <div class="col-md-7 offset-md-2">
+        <% if @posts.present? %>
+          <%= render 'index', posts: @posts %>
+        <% else %>
+          <p class='text-center'>投稿が見つかりませんでした</p>
+        <% end %>
+      </div>
+      <div class="col-md-3">
+        <%#= render 'seach', q: @q %>
+      </div>
+    </div>
+  </div>
+</div>

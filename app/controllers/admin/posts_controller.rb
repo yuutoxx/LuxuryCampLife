@@ -1,7 +1,9 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_search
+
   def index
-    @posts = Post.all
+    @posts = Post.all.order(params[:sort])
     @tag_list = Tag.all
   end
 
@@ -22,5 +24,12 @@ class Admin::PostsController < ApplicationController
     #検索されたタグに紐づく投稿を表示
     @posts= @tag.posts
     @tag_list = Tag.all
+  end
+
+  private
+
+  def set_search
+    @q = Post.ransack(params[:q])
+    @posts = @q.result
   end
 end

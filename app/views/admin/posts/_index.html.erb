@@ -1,8 +1,12 @@
+<div class='ml-2 mb-2'>
+  <%= link_to '新しい順', admin_posts_path(sort: 'created_at DESC'), class:'custom-link text-secondary' %> |
+  <%= link_to '評価の高い順', admin_posts_path(sort: 'star DESC'), class:'custom-link text-secondary' %>
+</div>
 <% posts.each do |post| %>
   <div class='card'>
     <div class='card-body'>
       <div class='d-flex flex-row mb-2'>
-        <%= link_to admin_customer_path(post) do %>
+        <%= link_to admin_customer_path(post.customer) do %>
           <%= image_tag post.customer.get_image(1000,1000), class: 'image-container rounded-circle' %>
         <% end %>
         <h5 class='ml-3'><%= post.customer.name %></h5>

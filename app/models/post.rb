@@ -17,7 +17,7 @@ class Post < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["title", "post_id", "price", "tag_id", "created_at", "tag_name"]
+    ["title", "price", "star", "created_at"]
   end
 
   def save_tags(tags)

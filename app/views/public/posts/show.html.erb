@@ -9,7 +9,7 @@
       <div class='card'>
         <div class='card-body'>
           <div class='d-flex flex-row mb-2'>
-            <%= link_to customer_path(@post) do %>
+            <%= link_to customer_path(@post.customer) do %>
               <%= image_tag @post.customer.get_image(1000,1000), class: 'image-container rounded-circle' %>
             <% end %>
             <h5 class='flex-grow-1 ml-3'><%= @post.customer.name %></h5>
@@ -35,8 +35,8 @@
               <p>¥<%= @post.price.to_s(:delimited) %></p>
               <!--タグリスト-->
               <% @post_tags.each do |tag| %>
-                <i class="fa-sharp fa-solid fa-tag"></i>
-                <%= link_to tag.name,search_tag_path(tag_id: tag.id) %>
+                <i class="fa-solid fa-tag" style="color: #B197FC;"></i>
+                <%= link_to tag.name,search_tag_path(tag_id: tag.id), class:'custom-link text-secondary' %>
               <% end %>
             </div>
           </div>
@@ -59,7 +59,7 @@
           <div class='card'>
             <div class='card-body'>
               <div class='d-flex flex-row'>
-                <%= link_to customer_path(@post) do %>
+                <%= link_to customer_path(@post.customer) do %>
                   <%= image_tag post_comment.customer.get_image(1000,1000), class: 'image-container rounded-circle' %>
                 <% end %>
                 <h5 class='flex-grow-1 pl-3'>

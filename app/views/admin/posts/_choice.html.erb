@@ -1,4 +1,4 @@
-<%= search_form_for @q, url: posts_search_path do |f| %>
+<%= search_form_for @q, url: admin_posts_search_path do |f| %>
   <h4 class="text-center mt-3">詳細検索</h4>
   <div class="form-group">
     <div class="d-flex">
@@ -26,5 +26,5 @@
     <span>~</span>
     <%= f.date_field :created_at_lteq_end_of_day %>
   </div>
-  <%= f.submit '検索する', class:"btn btn-outline-info col-sm-6 offset-md-3 my-4" %>
+  <%= f.submit '検索する', class:"btn btn-outline-info col-sm-6 offset-md-3 mt-4" %>
 <% end %>
