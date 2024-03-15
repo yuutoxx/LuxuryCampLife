@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
 
   def set_search
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
+    @posts = @q.result.order(params[:sort])
   end
 
   def ensure_correct_customer

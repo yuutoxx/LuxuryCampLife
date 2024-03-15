@@ -30,6 +30,6 @@ class Admin::PostsController < ApplicationController
 
   def set_search
     @q = Post.ransack(params[:q])
-    @posts = @q.result
+    @posts = @q.result.order(params[:sort])
   end
 end
