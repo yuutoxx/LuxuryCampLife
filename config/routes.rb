@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         patch 'withdraw'
       end
     end
+    get 'posts/search' => 'posts#search'
     get 'search_tag' => 'posts#search_tag'
     resources :posts, only: [:create, :index, :show, :edit, :update, :destroy] do
       resources :post_comments, only: [:create, :destroy]

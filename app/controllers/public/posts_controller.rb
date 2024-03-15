@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :set_search
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def create
@@ -19,6 +20,8 @@ class Public::PostsController < ApplicationController
     @post = Post.new
     @posts = Post.all
     @tag_list = Tag.all
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
   end
 
   def show
@@ -55,6 +58,11 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :image, :price, :star)
+  end
+
+  def set_search
+    @q = Post.ransack(params[:q])
+    @posts = @q.result
   end
 
   def ensure_correct_customer

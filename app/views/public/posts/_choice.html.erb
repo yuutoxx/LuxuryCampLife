@@ -1,0 +1,26 @@
+<div class="search-bar">
+  <%= search_form_for @q, url: posts_search_path do |f| %>
+    <div class="nav-title">詳細検索</div>
+
+        <div class="search-nav-content">
+          <p><%= f.label :title_cont, "タイトル" %></p>
+          <%= f.collection_select :post_id_eq, Post.where.not(id: 0), :id, :title, include_blank: "タイトルの選択"  %>
+        </div>
+        <div class="search-nav-content">
+          <%= f.label :price_cont, "価格" %>
+          <%= f.number_field :price_gteq, class:"input-price", placeholder: "¥Min" %> 〜
+          <%= f.number_field :price_lteq, class:"input-price", placeholder: "¥Max" %>
+        </div>
+        <div class="search-nav-content">
+          <p><%= f.label "タグを選択する" %></p>
+          <%= f.collection_select :tag_id_eq, Tag.where.not(id: 0), :id, :name, include_blank: "タグの選択", class:"search-select-box"  %>
+        </div>
+        <div class="search-nav-content">
+           <%= f.date_field :created_at_gteq %>
+           <span>~</span>
+           <%= f.date_field :created_at_lteq, value: Time.current.end_of_day %>
+        </div>
+        <%= f.submit '検索する' %>
+
+    <% end %>
+  </div>
