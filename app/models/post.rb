@@ -20,10 +20,6 @@ class Post < ApplicationRecord
     ["title", "post_id", "price", "tag_id", "created_at", "tag_name"]
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    ["title", "post_id", "price", "tag_id", "created_at", "tag_name"]
-  end
-
   def save_tags(tags)
     # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:name) unless self.tags.nil?

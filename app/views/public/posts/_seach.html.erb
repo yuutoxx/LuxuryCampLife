@@ -1,5 +1,5 @@
 <%= search_form_for @q, url: posts_search_path, class:"search-form" do |f| %>
-  <div class='col-md-7 d-flex m-3'>
+  <div class='col-md-11 d-flex m-3'>
     <%= f.search_field :title_cont, class:"form-control", placeholder: 'キーワードから探す' %>
     <button class="btn btn-outline-secondary" type="submit">
       <i class="fa-solid fa-magnifying-glass"></i>

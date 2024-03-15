@@ -1,26 +1,34 @@
-<div class="search-bar">
+<div class="search-bar p-0">
   <%= search_form_for @q, url: posts_search_path do |f| %>
-    <div class="nav-title">詳細検索</div>
+    <h4 class="text-center">詳細検索</h4>
 
-        <div class="search-nav-content">
-          <p><%= f.label :title_cont, "タイトル" %></p>
-          <%= f.collection_select :post_id_eq, Post.where.not(id: 0), :id, :title, include_blank: "タイトルの選択"  %>
+        <div class="form-group">
+          <div class="d-flex">
+            <label for="customRange1", class="col-md-3" ><%= f.label :price_cont, "価格" %></label><br>
+            <div class="col-md-9">
+              <%= f.number_field :price_lteq, class:"input-price", placeholder: "¥Max", type: "range", class: "form-range", min: "1000", max: "20000", step: "1000", id: "customRange1", oninput: "updatePriceRange()" %>
+              <script>
+                function updatePriceRange() {
+                  var slider = document.getElementById("customRange1");
+                  var output = document.getElementById("priceValue");
+                  output.textContent = "¥" + slider.value; // 反映させる要素に価格を表示
+                }
+              </script>
+              <p><span id="priceValue">¥11000</span>以下</p>
+            </div>
+          </div>
         </div>
-        <div class="search-nav-content">
-          <%= f.label :price_cont, "価格" %>
-          <%= f.number_field :price_gteq, class:"input-price", placeholder: "¥Min" %> 〜
-          <%= f.number_field :price_lteq, class:"input-price", placeholder: "¥Max" %>
-        </div>
-        <div class="search-nav-content">
-          <p><%= f.label "タグを選択する" %></p>
+
+        <div class="">
+          <p><%= f.label :tag_cont, "タグ" %></p>
           <%= f.collection_select :tag_id_eq, Tag.where.not(id: 0), :id, :name, include_blank: "タグの選択", class:"search-select-box"  %>
         </div>
-        <div class="search-nav-content">
+        <div class="">
            <%= f.date_field :created_at_gteq %>
            <span>~</span>
-           <%= f.date_field :created_at_lteq, value: Time.current.end_of_day %>
+           <%= f.date_field :created_at_lteq_end_of_day %>
         </div>
-        <%= f.submit '検索する' %>
+        <%= f.submit '検索する', class:"col-sm-6 offset-md-3" %>
 
     <% end %>
   </div>
