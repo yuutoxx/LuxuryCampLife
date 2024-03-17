@@ -10,6 +10,19 @@ class Customer < ApplicationRecord
 
   validates :name, presence: true, length: { in: 2..20 }
 
+  GUEST_CUSTOMER_EMAIL = "guest@example.com"
+
+    def self.guest
+      find_or_create_by!(email: GUEST_CUSTOMER_EMAIL) do |customer|
+        customer.password = SecureRandom.urlsafe_base64
+        customer.name = 'ゲスト'
+      end
+    end
+
+    def guest_customer?
+      email == GUEST_CUSTOMER_EMAIL
+    end
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

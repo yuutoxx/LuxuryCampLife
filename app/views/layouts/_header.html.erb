@@ -60,6 +60,11 @@
               <i class="fa-solid fa-arrow-right-to-bracket"></i>Log In
             <% end %>
           </li>
+          <li>
+            <%= link_to customers_guest_sign_in_path,class: 'btn btn-outline-light rounded-pill nav-link text-light m-2', method: :post do %>
+              <i class="fa-solid fa-arrow-right-to-bracket"></i>ゲストログイン
+            <% end %>
+          </li>
         <% end %>
         </ul>
       </div>
