@@ -20,6 +20,10 @@
             <p><%= render 'static_rate', post: post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= post.post_comments.count %></p>
           </div>
           <p>¥<%= post.price.to_s(:delimited) %></p>
+          <% post.tags.each do |tag| %>
+            <i class="fa-solid fa-tag" style="color: #B197FC;"></i>
+            <%= link_to tag.name, search_tag_path(tag_id: tag.id), class:'custom-link text-secondary' %>
+          <% end %>
         </div>
       </div>
     </div>
