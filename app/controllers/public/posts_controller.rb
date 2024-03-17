@@ -16,14 +16,11 @@ class Public::PostsController < ApplicationController
     end
   end
 
-def index
-  @post = Post.new
-  @posts = Post.all.order(params[:sort])
-  if params[:tag_id].present?
-    @post_tag = Tag.find(params[:tag_id])
+  def index
+    @post = Post.new
+    @posts = Post.all.order(params[:sort])
+    @tag_list = Tag.all
   end
-  @tag_list = Tag.all
-end
 
   def show
     @post = Post.find(params[:id])
@@ -58,7 +55,7 @@ end
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :price, :star, :tag_id)
+    params.require(:post).permit(:title, :body, :image, :price, :star)
   end
 
   def set_search
