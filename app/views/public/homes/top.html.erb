@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-    <div id="carouselExampleFade" class="carousel slide carousel-fade mt-5">
+    <h1 class="volkhov-regular mt-3">LuxuryCampLifeへようこそ！</h1>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade mt-3">
       <div class="carousel-inner">
         <div class="carousel-item item active">
           <%= image_tag "コテージ.jpeg", class:"d-block w-100" %>
@@ -24,5 +25,45 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+  </div>
+
+  <h2 class="mt-5">最近の投稿</h2>
+  <div class="d-flex justify-content-center">
+    <div class="col-md-8">
+      <% @posts.last(4).each do |post| %>
+        <div class='card'>
+           <div class='card-body'>
+            <div class='d-flex flex-row mb-2'>
+               <%= link_to customer_path(post.customer) do %>
+                 <%= image_tag post.customer.get_image(1000,1000), class: 'image-container rounded-circle' %>
+              <% end %>
+              <h5 class='ml-3'><%= post.customer.name %></h5>
+            </div>
+            <div class='d-flex flex-row offset-md-1'>
+              <div class='img-container mr-3'>
+                <%= link_to post_path(post) do %>
+                  <%= image_tag post.get_post_image(800,800) %>
+                <% end %>
+              </div>
+              <div class='col-md-6 p-0'>
+                <h5 class='mb-3'><%= post.title %></h5>
+                <p><%= post.body %></p>
+                <div class='d-flex flex-row mb-3'>
+                  <p><%= render 'public/posts/static_rate', post: post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= post.post_comments.count %></p>
+                </div>
+                <p>¥<%= post.price.to_s(:delimited) %></p>
+                <% post.tags.each do |tag| %>
+                  <i class="fa-solid fa-tag" style="color: #B197FC;"></i>
+                  <%= link_to tag.name, search_tag_path(tag_id: tag.id), class:'custom-link text-secondary' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-right my-4 mr-5 pr-5">
+    <%= link_to "すべての投稿を見る >", posts_path, class: "custom-link text-dark" %>
   </div>
 </div>
