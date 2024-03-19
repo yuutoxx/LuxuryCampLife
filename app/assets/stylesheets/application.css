@@ -46,3 +46,98 @@
 .custom-link:hover::after{
   width: 100%;
 }
+
+.background-color {
+  background-color: #97B387;
+}
+
+.volkhov-regular {
+  font-family: "Volkhov", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.kings-regular {
+  font-size: 25px;
+  font-family: "Kings", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#map {
+  width: 100%;
+  height: calc(100vh - 88px - 179px);
+}
+
+.img-text {
+  background: url('https://images.pexels.com/photos/3694362/pexels-photo-3694362.jpeg') no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  padding-top: 100px;
+  height: 600px;
+  color: #fff;
+}
+
+.box {
+	background: rgba(0, 0, 0, 0.4);
+  border: 3px solid #000;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px 20px;
+}
+
+.subheading-text {
+  list-style: none;
+  font-size: 35px;
+  line-height: 50px;
+}
+
+.carousel{
+  height: 200px;
+  margin:auto;
+}
+
+.carousel .item {
+  height: 100%;
+}
+
+.carousel d-block {
+  position: absolute;
+}
+
+@media (min-width: 390px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:250px;
+  }
+}
+
+@media (min-width: 440px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:270px;
+  }
+}
+
+@media (min-width: 768px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:450px;
+  }
+}
+
+@media (min-width: 990px) {
+  .carousel,
+  .carousel .item,
+  .carousel .item-mask,
+  .carousel-inner .item .item-mask img {
+    height:700px;
+  }
+}

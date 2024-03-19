@@ -50,7 +50,7 @@
   </div>
   <div class='form-group'>
     <label>タグ（、で区切ると複数登録可能）</label>
-    <%= f.text_field :name, class: 'form-control', placeholder:'テント、寝袋' %>
+    <%= f.text_field :name, name: 'tag[name]', value: @post_tag_names, class: 'form-control', placeholder:'テント、寝袋' %>
   </div>
   <div class='form-group d-flex justify-content-center'>
     <% if post.new_record? %>

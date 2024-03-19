@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     # 受け取った値を、で区切って配列にする
-    tag_list = params[:post][:name].split('、')
+    tag_list = params[:tag][:name].split('、')
     if@post.save
       @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "投稿が完了しました。"
@@ -29,10 +29,15 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+  # 編集対象の投稿に関連付けられたタグを取得し、カンマ区切りの文字列に変換してフォームに渡す
+  @post_tag_names = @post.tags.pluck(:name).join('、')
   end
 
   def update
+    tag_list = params[:tag][:name].split('、')
     if @post.update(post_params)
+      @post.tags.destroy_all
+      @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "You have updated post successfully."
     else
       render "edit"
@@ -55,7 +60,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :price, :star)
+    params.require(:post).permit(:title, :body, :image, :price, :star, :tag, :tag_name)
   end
 
   def set_search
