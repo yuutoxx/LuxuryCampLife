@@ -3,7 +3,7 @@ class Admin::PostsController < ApplicationController
   before_action :set_search
 
   def index
-    @posts = Post.all.order(params[:sort])
+    @posts = Post.all.order(params[:sort]).page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
@@ -22,7 +22,7 @@ class Admin::PostsController < ApplicationController
     #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
-    @posts= @tag.posts
+    @posts= @tag.posts.page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
@@ -30,6 +30,6 @@ class Admin::PostsController < ApplicationController
 
   def set_search
     @q = Post.ransack(params[:q])
-    @posts = @q.result.order(params[:sort])
+    @posts = @q.result.order(params[:sort]).page(params[:page]).per(5)
   end
 end

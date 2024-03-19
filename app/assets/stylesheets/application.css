@@ -64,6 +64,20 @@
   font-style: normal;
 }
 
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+
 #map {
   width: 100%;
   height: calc(100vh - 88px - 179px);

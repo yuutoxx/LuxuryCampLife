@@ -18,7 +18,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all.order(params[:sort])
+    @posts = Post.all.order(params[:sort]).page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
@@ -29,7 +29,7 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-  # 編集対象の投稿に関連付けられたタグを取得し、カンマ区切りの文字列に変換してフォームに渡す
+  # 編集対象の投稿に関連付けられたタグを取得し、、区切りの文字列に変換してフォームに渡す
   @post_tag_names = @post.tags.pluck(:name).join('、')
   end
 
@@ -53,7 +53,7 @@ class Public::PostsController < ApplicationController
     #検索されたタグを受け取る
     @tag = Tag.find(params[:tag_id])
     #検索されたタグに紐づく投稿を表示
-    @posts= @tag.posts
+    @posts= @tag.posts.page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
@@ -65,7 +65,7 @@ class Public::PostsController < ApplicationController
 
   def set_search
     @q = Post.ransack(params[:q])
-    @posts = @q.result.order(params[:sort])
+    @posts = @q.result.order(params[:sort]).page(params[:page]).per(5)
   end
 
   def ensure_correct_customer
