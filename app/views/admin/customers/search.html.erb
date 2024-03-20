@@ -1,0 +1,19 @@
+<div class="main">
+  <div class="container">
+    <div class="customer-contents">
+      <div class="d-flex">
+        <h2 class="customer-contents-title col-md-2 m-2">検索結果</h2>
+        <div class="col-md-6 offset-md-1">
+          <%= render 'seach', q: @q %>
+        </div>
+      </div>
+      <div>
+        <% if @customers.present? %>
+          <%= render 'index', customers: @customers %>
+        <% else %>
+          <p class='text-center'>会員が見つかりませんでした</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
