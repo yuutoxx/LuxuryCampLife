@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     # 受け取った値を、で区切って配列にする
-    tag_list = params[:tag][:name].split('、')
+    tag_list = params[:post][:name].split('、')
     if@post.save
       @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "投稿が完了しました。"
@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :price, :star, :tag, :tag_name)
+    params.require(:post).permit(:title, :body, :image, :price, :star, :tags, :tag_name)
   end
 
   def set_search

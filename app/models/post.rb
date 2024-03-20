@@ -8,9 +8,11 @@ class Post < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :body
+    validates :image
     validates :price
     validates :star
-    validates :image
+    validates :tag
+
   end
 
   def get_post_image(width,height)
