@@ -9,6 +9,7 @@ class Post < ApplicationRecord
     validates :title
     validates :body
     validates :price
+    validates :star
     validates :image
   end
 
