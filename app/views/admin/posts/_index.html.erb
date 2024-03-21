@@ -22,7 +22,7 @@
           <p>¥<%= post.price.to_s(:delimited) %></p>
           <% post.tags.each do |tag| %>
             <i class="fa-solid fa-tag" style="color: #B197FC;"></i>
-            <%= link_to tag.name, search_tag_path(tag_id: tag.id), class:'custom-link text-secondary' %>
+            <%= link_to tag.name, admin_search_tag_path(tag_id: tag.id), class:'custom-link text-secondary' %>
           <% end %>
         </div>
       </div>

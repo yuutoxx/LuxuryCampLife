@@ -1,13 +1,10 @@
 <div class='container mt-3'>
   <div class='row justify-content-center'>
     <div class='col-md-8 p-0'>
-      <div class='d-flex'>
-        <div class='d-flex flex-grow-1'>
-          <%= link_to posts_path, data: {"turbolinks" => false} do %>
-            <i class="fa-solid fa-arrow-left mb-4 text-dark"><span class='ml-4'>投稿する</span></i>
-          <% end %>
-          <%= flash[:notice] %>
-        </div>
+      <div>
+        <%= link_to posts_path, data: {"turbolinks" => false} do %>
+           <i class="fa-solid fa-arrow-left mb-4 text-dark"><span class='ml-4'>投稿する</span></i>
+        <% end %>
       </div>
       <div class='card'>
         <div class='card-body'>
@@ -45,12 +42,15 @@
           </div>
         </div>
       </div>
-      <!--コメント-->
-      <div id="comments-error"></div>
+      <div>
+
+        <!--コメント-->
         <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
-      <!--コメント一覧-->
-      <div id="comment_show">
-        <%= render "public/post_comments/show", post: @post %>
+        <!--コメント一覧-->
+        <div id="comment_show">
+          <%= render "public/post_comments/show", post: @post %>
+          <div id="comments_error"></div>
+        </div>
       </div>
     </div>
   </div>

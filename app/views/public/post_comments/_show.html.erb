@@ -3,7 +3,7 @@
     <div class='card'>
       <div class='card-body'>
         <div class='d-flex flex-row'>
-          <%= link_to customer_path(post.customer) do %>
+          <%= link_to customer_path(post_comment.customer) do %>
             <%= image_tag post_comment.customer.get_image(1000,1000), class: 'image-container rounded-circle' %>
           <% end %>
           <h5 class='flex-grow-1 pl-3'>

@@ -1,3 +1,6 @@
 $('#comment_show').html("<%= j(render "public/post_comments/show", post: @post) %>");
 $('#comment_count').html("<%= j(render "public/post_comments/count", post: @post) %>");
 $("textarea").val('');
+if ($("#comments-error").length) {
+  $("#comments-error").remove();
+}

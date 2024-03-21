@@ -1,7 +1,11 @@
 <header class="sticky-top shadow-sm bg-light">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <%= link_to "LuxuryCampLife", root_path, class: 'navbar-brand kings-regular' %>
+      <% if admin_signed_in? %>
+        <%= link_to "LuxuryCampLife", admin_root_path, class: 'navbar-brand kings-regular' %>
+      <% else %>
+        <%= link_to "LuxuryCampLife", root_path, class: 'navbar-brand kings-regular' %>
+      <% end %>
       <div>
         <% if customer_signed_in? %>
           <p class="text-dark volkhov-regular m-2 ml-4">ようこそ<%= current_customer.name %>さん！</p>

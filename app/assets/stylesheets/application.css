@@ -78,11 +78,6 @@
   border-radius: 15px;
 }
 
-#map {
-  width: 100%;
-  height: calc(100vh - 88px - 179px);
-}
-
 .img-text {
   background: url('https://images.pexels.com/photos/3694362/pexels-photo-3694362.jpeg') no-repeat center center;
   background-size: cover;

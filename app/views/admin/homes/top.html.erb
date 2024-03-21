@@ -34,14 +34,14 @@
         <div class='card'>
            <div class='card-body'>
             <div class='d-flex flex-row mb-2'>
-               <%= link_to customer_path(post.customer) do %>
+               <%= link_to admin_customer_path(post.customer) do %>
                  <%= image_tag post.customer.get_image(1000,1000), class: 'image-container rounded-circle' %>
               <% end %>
               <h5 class='ml-3'><%= post.customer.name %></h5>
             </div>
             <div class='d-flex flex-row offset-md-1'>
               <div class='img-container mr-3'>
-                <%= link_to post_path(post) do %>
+                <%= link_to admin_post_path(post) do %>
                   <%= image_tag post.get_post_image(800,800) %>
                 <% end %>
               </div>
@@ -54,7 +54,7 @@
                 <p>¥<%= post.price.to_s(:delimited) %></p>
                 <% post.tags.each do |tag| %>
                   <i class="fa-solid fa-tag" style="color: #B197FC;"></i>
-                  <%= link_to tag.name, search_tag_path(tag_id: tag.id), class:'custom-link text-secondary' %>
+                  <%= link_to tag.name, admin_search_tag_path(tag_id: tag.id), class:'custom-link text-secondary' %>
                 <% end %>
               </div>
             </div>
@@ -64,6 +64,6 @@
     </div>
   </div>
   <div class="text-right my-4 mr-5 pr-5">
-    <%= link_to "すべての投稿を見る >", posts_path, class: "custom-link text-dark" %>
+    <%= link_to "すべての投稿を見る >", admin_posts_path, class: "custom-link text-dark" %>
   </div>
 </div>
