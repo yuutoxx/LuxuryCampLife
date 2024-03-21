@@ -7,6 +7,7 @@
         </div>
         <div class="card-body text-center">
           <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
+            <%= render 'layouts/errors', obj: @customer %>
             <div class="field mb-3">
               <label class="w-25" for="email">メールアドレス</label>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email" %>

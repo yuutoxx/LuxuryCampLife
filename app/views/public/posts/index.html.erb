@@ -1,14 +1,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3 mt-4'>
-      <% if @post.errors.any? %>
-        <%= @post.errors.count %>件のエラーが発生しました
-        <ul>
-          <% @post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <%= flash[:notice] %>
       <%= render 'form', post: @post %>
     </div>
     <div class='col-md-6 p-0'>
@@ -17,7 +10,7 @@
         <%= link_to '新しい順', posts_path(sort: 'created_at DESC'), class:'custom-link text-secondary' %> |
         <%= link_to '評価の高い順', posts_path(sort: 'star DESC'), class:'custom-link text-secondary' %>
       </div>
-      <%= render 'index', posts: @posts %>
+      <%= render 'index', posts: @posts, tag_list: @tag_list %>
     </div>
     <div class='col-md-3'>
       <div class="row justify-content-center">

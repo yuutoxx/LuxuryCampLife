@@ -1,10 +1,13 @@
 <div class='container mt-3'>
   <div class='row justify-content-center'>
     <div class='col-md-8 p-0'>
-      <div>
-        <%= link_to posts_path, data: {"turbolinks" => false} do %>
-          <i class="fa-solid fa-arrow-left mb-4 text-dark"><span class='ml-4'>投稿する</span></i>
-        <% end %>
+      <div class='d-flex'>
+        <div class='d-flex flex-grow-1'>
+          <%= link_to posts_path, data: {"turbolinks" => false} do %>
+            <i class="fa-solid fa-arrow-left mb-4 text-dark"><span class='ml-4'>投稿する</span></i>
+          <% end %>
+          <%= flash[:notice] %>
+        </div>
       </div>
       <div class='card'>
         <div class='card-body'>
@@ -30,7 +33,7 @@
               <h5 class='mb-3'><%= @post.title %></h5>
               <p><%= @post.body %></p>
               <div class='d-flex flex-row mb-3'>
-                <p><%= render "static_rate", post: @post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= @post.post_comments.count %></p>
+                <p><%= render "static_rate", post: @post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><span id="comment_count"><%= render "public/post_comments/count", post: @post %></span></p>
               </div>
               <p>¥<%= @post.price.to_s(:delimited) %></p>
               <!--タグリスト-->
@@ -43,41 +46,11 @@
         </div>
       </div>
       <!--コメント-->
-      <div class='my-4'>
-        <%= form_with model: [@post, @post_comment] do |f| %>
-        <div class='form-group'>
-          <%= f.text_area :comment, rows: '3', placeholder: "コメント", class: 'form-control post_comment' %>
-          <div class='d-flex flex-row-reverse'>
-            <%= f.submit "送信",　type: 'button', class: 'btn btn-outline-success col-sm-3 m-2' %>
-          </div>
-        </div>
-        <% end %>
-      </div>
+      <div id="comments-error"></div>
+        <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
       <!--コメント一覧-->
-      <div>
-        <% @post.post_comments.each do |post_comment| %>
-          <div class='card'>
-            <div class='card-body'>
-              <div class='d-flex flex-row'>
-                <%= link_to customer_path(@post.customer) do %>
-                  <%= image_tag post_comment.customer.get_image(1000,1000), class: 'image-container rounded-circle' %>
-                <% end %>
-                <h5 class='flex-grow-1 pl-3'>
-                  <%= post_comment.customer.name %>
-                </h5>
-                <% if post_comment.customer == current_customer %>
-                  <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, data: { confirm: '本当に消しますか？' } do %>
-                    <i class="fa-regular fa-trash-can fa-xl p-2" style="color: #ff0000;"></i>
-                  <% end %>
-                <% end %>
-              </div>
-              <div>
-                <p class='offset-md-1 w-75'><%= post_comment.comment %></p>
-                <p class='text-right mr-4'><%= post_comment.created_at.strftime('%Y/%m/%d') %></p>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <div id="comment_show">
+        <%= render "public/post_comments/show", post: @post %>
       </div>
     </div>
   </div>

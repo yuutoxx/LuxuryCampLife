@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     # 受け取った値を、で区切って配列にする
-    tag_list = params[:post][:name].split('、')
+    tag_list = params[:tag][:name].split('、')
     if@post.save
       @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "投稿が完了しました。"
@@ -20,12 +20,18 @@ class Public::PostsController < ApplicationController
     @post = Post.new
     @posts = Post.all.order(params[:sort]).page(params[:page]).per(5)
     @tag_list = Tag.all
+    tag_list = Tag.all
   end
 
   def show
     @post = Post.find(params[:id])
     @post_tags = @post.tags
     @post_comment = PostComment.new
+    if @post_comment.save
+      redirect_to post_path(@post)
+    else
+      render 'show'
+    end
   end
 
   def edit
@@ -38,7 +44,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       @post.tags.destroy_all
       @post.save_tags(tag_list)
-      redirect_to post_path(@post), notice: "You have updated post successfully."
+      redirect_to post_path(@post), notice: "投稿を更新しました。"
     else
       render "edit"
     end
@@ -60,7 +66,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image, :price, :star, :tags, :tag_name)
+    params.require(:post).permit(:title, :body, :image, :price, :star)
   end
 
   def set_search

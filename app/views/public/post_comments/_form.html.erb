@@ -1,0 +1,10 @@
+<div class='my-4'>
+  <%= form_with model: [post, post_comment], local: false do |f| %>
+    <div class='form-group'>
+      <%= f.text_area :comment, rows: '3', placeholder: "コメント", class: 'form-control post_comment', id: "comment_textarea" %>
+      <div class='d-flex flex-row-reverse'>
+        <%= f.submit "送信",　type: 'button', class: 'btn btn-outline-success col-sm-3 m-2' %>
+      </div>
+    </div>
+  <% end %>
+</div>

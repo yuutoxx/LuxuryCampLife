@@ -49,7 +49,7 @@ class Public::CustomersController < ApplicationController
   def ensure_guest_customer
     @customer = Customer.find(params[:id])
     if @customer.guest_customer?
-      redirect_to customer_path(customer) , notice: 'ゲストはプロフィール編集画面へ遷移できません。'
+      redirect_to customer_path(@customer) , notice: 'ゲストはプロフィール編集画面へ遷移できません。'
     end
   end
 end

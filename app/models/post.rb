@@ -11,8 +11,6 @@ class Post < ApplicationRecord
     validates :image
     validates :price
     validates :star
-    validates :tag
-
   end
 
   def get_post_image(width,height)

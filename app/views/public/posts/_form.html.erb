@@ -1,5 +1,6 @@
 <%#プレビュー画像を表示させる設定→<div id="previews"></div>で指定%>
 <%= form_with model: post, id: 'post_img', local:true do |f| %>
+  <%= render 'layouts/errors', obj: @post %>
   <div class='form-group'>
     <%= f.label :タイトル %>
     <%= f.text_field :title, class: 'form-control post_title', placeholder: 'テント' %>
