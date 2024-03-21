@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :is_matching_login_customer, onle: [:edit]
+  before_action :is_matching_login_customer, only: [:edit, :update]
   before_action :ensure_guest_customer, only: [:edit]
 
   def show

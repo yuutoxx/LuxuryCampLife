@@ -5,8 +5,10 @@
         <div class="card-body">
           <div class="d-flex">
             <h5>登録情報</h5>
-            <% unless @customer.guest_customer? %>
-              <%= link_to "編集", edit_customer_path(@customer), data: {"turbolinks" => false}, class: "btn btn-outline-secondary btn-sm col-sm-2 ml-2 mt-0 mb-2" %>
+            <% if current_customer == @customer %>
+              <% unless @customer.guest_customer? %>
+                <%= link_to "編集", edit_customer_path(@customer), data: {"turbolinks" => false}, class: "btn btn-outline-secondary btn-sm col-sm-2 ml-2 mt-0 mb-2" %>
+              <% end %>
             <% end %>
           </div>
           <table class="table">
@@ -16,13 +18,15 @@
                 <td><%= image_tag @customer.get_image(1000,1000), class: 'image-container rounded-circle' %></td>
               </tr>
               <tr>
-                <th>氏名</th>
+                <th>名前</th>
                 <td><%= @customer.name %></td>
               </tr>
-              <tr>
-                <th>メールアドレス</th>
-                <td><%= @customer.email %></td>
-              </tr>
+              <% if current_customer == @customer %>
+                <tr>
+                  <th>メールアドレス</th>
+                  <td><%= @customer.email %></td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
