@@ -79,7 +79,7 @@
 }
 
 .img-text {
-  background: url('https://images.pexels.com/photos/3694362/pexels-photo-3694362.jpeg') no-repeat center center;
+  background: image-url('https://images.pexels.com/photos/3694362/pexels-photo-3694362.jpeg') no-repeat center center;
   background-size: cover;
   text-align: center;
   padding-top: 100px;
