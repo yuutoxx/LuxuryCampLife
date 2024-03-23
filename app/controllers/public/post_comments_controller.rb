@@ -2,10 +2,9 @@ class Public::PostCommentsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     @post = Post.find(params[:post_id])
-    @post_comment = PostComment.new(post_comment_params)
-    comment = current_customer.post_comments.new(post_comment_params)
-    comment.post_id = post.id
-    unless comment.save
+    @post_comment = current_customer.post_comments.new(post_comment_params)
+    @post_comment.post_id = post.id
+    unless @post_comment.save
       render 'error'
     end
   end
