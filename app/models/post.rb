@@ -12,6 +12,9 @@ class Post < ApplicationRecord
     validates :price
     validates :star
   end
+  
+  validates :title, length: { in: 2..25 }
+  validates :body, length: { in: 2..200 }
 
   def get_post_image(width,height)
     image.variant(resize_to_limit: [width,height]).processed

@@ -2,17 +2,17 @@
 <%= form_with model: post, id: 'post_img', local:true do |f| %>
   <%= render 'layouts/errors', obj: @post %>
   <div class='form-group'>
-    <%= f.label :タイトル %>
+    <%= f.label :タイトル %><span class="badge badge-danger ml-3">必須</span>
     <%= f.text_field :title, class: 'form-control post_title', placeholder: 'テント' %>
   </div>
   <div class='form-group'>
-    <%= f.label :説明 %>
+    <%= f.label :説明 %><span class="badge badge-danger ml-3">必須</span>
     <%= f.text_area :body, rows: '5', class: 'form-control post_body', placeholder: '使用感など' %>
   </div>
   <div class='form-group'>
     <div class="image-field">
       <label class='form-image'>
-        <span class='image-file'><i class="fa-regular fa-image mr-2"></i>画像選択</span>
+        <span class='image-file'><i class="fa-regular fa-image mr-2"></i>画像選択</span><span class="badge badge-danger ml-3">必須</span>
         <%= f.file_field :image, class: "hidden", style: "display: none;" %>
       </label>
       <div class="rounded-circle" id="previews"></div>
@@ -41,10 +41,11 @@
     </script>
   <% else %>
     <div class='form-group'>
-      <%= render "static_rate", post: post %>
+      <%= render "static_rate", post: post %><span class="badge badge-danger ml-3">必須</span>
     </div>
   <% end %>
   <div class='form-group'>
+    <%= f.label :価格 %><span class="badge badge-danger ml-3">必須</span>
     <div class='d-flex'>
     <%=f.text_field :price, class: 'form-control post_price', placeholder:'1000' %><h6 class='p-2'>円</h6>
     </div>
