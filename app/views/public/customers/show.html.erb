@@ -22,6 +22,10 @@
                 <th>名前</th>
                 <td><%= @customer.name %></td>
               </tr>
+              <tr>
+                <th>自己紹介</th>
+                <td class="w-50"><%= @customer.introduction %></td>
+              </tr>
               <% if current_customer == @customer %>
                 <tr>
                   <th>メールアドレス</th>

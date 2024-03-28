@@ -31,9 +31,13 @@
                   </td>
                 </tr>
                 <tr>
+                  <th>自己紹介</th>
+                  <td><%= f.text_field :introduction, autocomplete: "introduction", class: "form-control mb-2" %></td>
+                </tr>
+                <tr>
                   <th>メールアドレス</th>
                   <td>
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                    <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
                   </td>
                 </tr>
               </tbody>

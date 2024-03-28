@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true, length: { in: 2..20 }
+  validates :introduction, length: { maximum: 150 }
 
   def self.ransackable_attributes(auth_object = nil)
     ["name"]
