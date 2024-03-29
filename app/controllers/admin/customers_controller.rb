@@ -32,6 +32,6 @@ class Admin::CustomersController < ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:name, :email, :is_active)
+    params.require(:customer).permit(:name, :introduction, :email, :is_active)
   end
 end

@@ -17,13 +17,19 @@
                 <tr>
                   <th>名前</th>
                   <td>
-                    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control mb-2" %>
+                    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>自己紹介</th>
+                  <td>
+                    <%= f.text_area :introduction, rows: '5', autocomplete: "introduction", class: "form-control" %>
                   </td>
                 </tr>
                 <tr>
                   <th>メールアドレス</th>
                   <td>
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                    <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
                   </td>
                 </tr>
                 <tr>
