@@ -9,10 +9,6 @@
       </div>
       <div class="col-md-7 offset-md-2">
         <% if @posts.present? %>
-          <div class='ml-2 mb-2'>
-            <%= link_to '新しい順', admin_posts_search_path(sort: 'created_at DESC'), class:'custom-link text-secondary' %> |
-            <%= link_to '評価の高い順', admin_posts_search_path(sort: 'star DESC'), class:'custom-link text-secondary' %>
-          </div>
           <%= render 'index', posts: @posts %>
         <% else %>
           <p class='text-center'>投稿が見つかりませんでした</p>
