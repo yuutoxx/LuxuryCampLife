@@ -21,7 +21,6 @@ class Public::PostsController < ApplicationController
     @post = Post.new
     @posts = Post.all.order(params[:sort]).page(params[:page]).per(5)
     @tag_list = Tag.all
-    tag_list = Tag.all
   end
 
   def show
