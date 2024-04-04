@@ -5,6 +5,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.score = Language.get_data(post_params[:body]) #感情分析
     @post.customer_id = current_customer.id
     # 受け取った値を、で区切って配列にする
     tag_list = params[:tag][:name].split('、')

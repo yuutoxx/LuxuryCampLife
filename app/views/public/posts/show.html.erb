@@ -30,6 +30,7 @@
             <div class='col-md-7'>
               <h5 class='mb-3'><%= @post.title %></h5>
               <p><%= @post.body %></p>
+              <p class="sentiment-score">本文の感情分析スコア[<%= @post.score %>]</p>
               <div class='d-flex flex-row mb-3'>
                 <p><%= render "static_rate", post: @post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><span id="comment_count"><%= render "public/post_comments/count", post: @post %></span></p>
               </div>
