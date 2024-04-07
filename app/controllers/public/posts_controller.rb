@@ -40,6 +40,7 @@ class Public::PostsController < ApplicationController
   end
 
   def update
+    @post.score = Language.get_data(post_params[:body]) #感情分析
     tag_list = params[:tag][:name].split('、')
     if @post.update(post_params)
       @post.tags.destroy_all
