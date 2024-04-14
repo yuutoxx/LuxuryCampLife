@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one_attached :image
 
   with_options presence: true do
@@ -22,6 +23,10 @@ class Post < ApplicationRecord
 
   def self.ransackable_attributes(auth_object = nil)
     ["title", "price", "star", "created_at"]
+  end
+
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
   end
 
   def save_tags(tags)

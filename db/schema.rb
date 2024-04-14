@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_04_084001) do
+ActiveRecord::Schema.define(version: 2024_04_14_092454) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(version: 2024_04_04_084001) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "customer_id"
@@ -94,6 +101,11 @@ ActiveRecord::Schema.define(version: 2024_04_04_084001) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "score", precision: 5, scale: 3
+    t.string "address", default: "", null: false
+    t.float "latitude", default: 0.0, null: false
+    t.float "longitude", default: 0.0, null: false
+    t.float "lat"
+    t.float "lng"
   end
 
   create_table "tags", force: :cascade do |t|

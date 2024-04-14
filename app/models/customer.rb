@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one_attached :image
 
   validates :name, presence: true, length: { in: 2..20 }
