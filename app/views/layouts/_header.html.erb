@@ -11,25 +11,78 @@
           <p class="text-dark volkhov-regular m-2 ml-4">ようこそ<%= current_customer.name %>さん！</p>
         <% end %>
       </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-        <% if admin_signed_in? %>
-          <li class="nav-item"><%=  link_to "会員一覧", admin_customers_path,class: 'nav-link text-dark volkhov-regular' %></li>
-          <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-dark volkhov-regular' %></li>
-          <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-dark volkhov-regular' %></li>
-        <% elsif customer_signed_in? %>
-          <li class="nav-item"><%= link_to "マイページ", customer_path(current_customer),class: 'nav-link text-dark volkhov-regular' %></li>
-          <li class="nav-item"><%=  link_to "投稿", posts_path, data: {"turbolinks" => false}, class: 'nav-link text-dark volkhov-regular' %></li>
-          <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link text-dark volkhov-regular'  %></li>
-        <% else %>
-          <li class="nav-item"><%= link_to "LCLについて", about_path,class: 'nav-link text-dark volkhov-regular'  %></li>
-          <li class="nav-item"><%=  link_to "会員登録", new_customer_registration_path,class: 'nav-link text-dark volkhov-regular'  %></li>
-          <li class="nav-item"><%= link_to "会員ログイン", new_customer_session_path,class: 'nav-link text-dark volkhov-regular' %></li>
-          <li><%= link_to "ゲストログイン", customers_guest_sign_in_path,class: 'nav-link text-dark volkhov-regular', method: :post  %></li>
-        <% end %>
+          <!--管理者ログインの場合-->
+          <% if admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to admin_customers_path, class: 'nav-link text-dark volkhov-regular' do %>
+                <i class="fa-solid fa-users"></i>
+                  <span>会員一覧</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_posts_path, class: 'nav-link text-dark volkhov-regular' do %>
+                <i class="fa-solid fa-list"></i>
+                  <span>投稿一覧</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark volkhov-regular' do %>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                  <span>ログアウト</span>
+              <% end %>
+            </li>
+          <!--顧客ログインの場合-->
+          <% elsif customer_signed_in? %>
+            <li class="nav-item">
+              <%= link_to customer_path(current_customer), class: 'nav-link text-dark volkhov-regular' do %>
+                <i class="fa-solid fa-user"></i>
+                  <span>マイページ</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%=  link_to posts_path, data: {"turbolinks" => false}, class: 'nav-link text-dark volkhov-regular' do %>
+                <i class="fa-solid fa-list"></i>
+                  <span>投稿一覧</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-dark volkhov-regular' do %>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                  <span>ログアウト</span>
+              <% end %>
+            </li>
+          <!--未ログインの場合-->
+          <% else %>
+            <li class="nav-item">
+              <%= link_to about_path,class: 'nav-link text-dark volkhov-regular' do %>
+                <i class="fa-solid fa-fire"></i>
+                  <span>LCLについて</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_customer_registration_path, class: 'nav-link text-dark volkhov-regular' do %>
+                <i class="fa-solid fa-user-plus"></i>
+                  <span>会員登録</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_customer_session_path, class: 'nav-link text-dark volkhov-regular' do %>
+                <i class="fa-solid fa-right-to-bracket"></i>
+                  <span>会員ログイン</span>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to customers_guest_sign_in_path,class: 'nav-link text-dark volkhov-regular', method: :post do %>
+                <i class="fa-solid fa-right-to-bracket"></i>
+                  <span>ゲストログイン</span>
+              <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
