@@ -8,7 +8,9 @@
       <%= render 'seach', q: @q %>
       <div class='ml-2 mb-2'>
         <%= link_to '新しい順', posts_path(sort: 'created_at DESC'), class:'custom-link text-secondary' %> |
-        <%= link_to '評価の高い順', posts_path(sort: 'star DESC'), class:'custom-link text-secondary' %>
+        <%= link_to '古い順', posts_path(sort: 'created_at ASC'), class:'custom-link text-secondary' %> |
+        <%= link_to '評価の高い順', posts_path(sort: 'star DESC'), class:'custom-link text-secondary' %> |
+        <%= link_to '評価の低い順', posts_path(sort: 'star ASC'), class:'custom-link text-secondary' %>
       </div>
       <%= render 'index', posts: @posts, tag_list: @tag_list %>
     </div>
