@@ -22,7 +22,7 @@
           </div>
           <div class='d-flex flex-row'>
             <i class='fa-regular fa-comment-dots mt-1'></i><%= post.post_comments.count %>
-            <p class='ml-2' id="favorite-btn"><%= render 'public/favorites/btn', post: post %></p>
+            <p class='ml-2' id="favorite-btn<%= post.id %>"><%= render 'public/favorites/btn', post: post %></p>
           </div>
           <p>¥<%= post.price.to_s(:delimited) %></p>
           <% post.tags.each do |tag| %>
