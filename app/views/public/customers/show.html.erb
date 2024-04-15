@@ -61,7 +61,11 @@
                 <p class='w-75'><%= post.body %></p>
                 <p class="sentiment-score">本文の感情分析スコア<%= post.score %></p>
                 <div class='d-flex flex-row mb-3'>
-                  <p><%= render 'public/posts/static_rate', post: post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= post.post_comments.count %></p>
+                  <p><%= render 'public/posts/static_rate', post: post %></p>
+                </div>
+                <div class='d-flex flex-row'>
+                  <i class='fa-regular fa-comment-dots mt-1'></i><%= post.post_comments.count %>
+                  <p class='ml-2' id="favorite-btn"><%= render 'public/favorites/btn', post: post %></p>
                 </div>
                 <p>¥<%= post.price.to_s(:delimited) %></p>
                 <% post.tags.each do |tag| %>
