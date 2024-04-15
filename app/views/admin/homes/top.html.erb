@@ -51,6 +51,10 @@
                 <div class='d-flex flex-row mb-3'>
                   <p><%= render 'public/posts/static_rate', post: post %><i class="fa-regular fa-comment-dots ml-3 mr-1 mt-1"></i><%= post.post_comments.count %></p>
                 </div>
+                  <div class='d-flex flex-row'>
+                    <i class='fa-regular fa-comment-dots mt-1'></i><%= post.post_comments.count %>
+                    <p class='ml-2' id="favorite-btn"><%= render 'admin/favorites/btn', post: post %></p>
+                  </div>
                 <p>¥<%= post.price.to_s(:delimited) %></p>
                 <% post.tags.each do |tag| %>
                   <i class="fa-solid fa-tag" style="color: #B197FC;"></i>

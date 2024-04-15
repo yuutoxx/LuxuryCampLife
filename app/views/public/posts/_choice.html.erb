@@ -4,7 +4,7 @@
     <div class="d-flex">
       <label for="customRange1", class="m-3" ><%= f.label :price_cont, "価格" %></label><br>
       <div class="ml-3 mt-3">
-        <%= f.number_field :price_lteq, class:"input-price", placeholder: "¥Max", type: "range", class: "form-range", min: "1000", max: "30000", step: "1000", id: "customRange1", oninput: "updatePriceRange()" %>
+        <%= f.number_field :price_lteq, class:"input-price", placeholder: "¥Max", type: "range", class: "form-range", min: "1000", max: "50000", step: "1000", id: "customRange1", oninput: "updatePriceRange()" %>
         <script>
           function updatePriceRange() {
             var slider = document.getElementById("customRange1");
@@ -17,7 +17,7 @@
             updatePriceRange();
           };
         </script>
-        <p class="ml-3 mt-3"><span id="priceValue">¥16000</span>以下</p>
+        <p class="ml-3 mt-3"><span id="priceValue">¥26000</span>以下</p>
       </div>
     </div>
   </div>
