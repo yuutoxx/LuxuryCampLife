@@ -35,7 +35,7 @@
                 <p><%= render "static_rate", post: @post %></p>
               </div>
               <div class='d-flex flex-row'>
-                <i class='fa-regular fa-comment-dots mt-1'></i><%= @post.post_comments.count %>
+                <i class='fa-regular fa-comment-dots mt-1'></i><span id='comment_count'><%= @post.post_comments.count %></span>
                 <p class='ml-2' id="favorite-btn<%= @post.id %>"><%= render 'public/favorites/btn', post: @post %></p>
               </div>
               <p>¥<%= @post.price.to_s(:delimited) %></p>
