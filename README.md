@@ -18,9 +18,9 @@
 - 自分のおすすめの道具のレビュ―を投稿する時
 ​
 ## 設計書
-ER図(https://app.diagrams.net/#G1z3c1XsVMwaxusVnX8k7SUmjgaIYLsRu8#%7B%22pageId%22%3A%22rl4MCRku4Us7OVZ_is7g%22%7D)
-テーブル定義書(https://docs.google.com/spreadsheets/d/17Fuyd8Tzy3_1EGyuVUdtIKeehNrIHLMx/edit?usp=sharing&ouid=103092037831840282007&rtpof=true&sd=true)
-アプリケーション詳細設計(https://docs.google.com/spreadsheets/d/1Ll9_P1yzUfZm3gyljLqLKMld19aHH2BH2jPQJmEESyw/edit?usp=sharing)
+- ER図(https://app.diagrams.net/#G1z3c1XsVMwaxusVnX8k7SUmjgaIYLsRu8#%7B%22pageId%22%3A%22rl4MCRku4Us7OVZ_is7g%22%7D)
+- テーブル定義書(https://docs.google.com/spreadsheets/d/17Fuyd8Tzy3_1EGyuVUdtIKeehNrIHLMx/edit?usp=sharing&ouid=103092037831840282007&rtpof=true&sd=true)
+- アプリケーション詳細設計(https://docs.google.com/spreadsheets/d/1Ll9_P1yzUfZm3gyljLqLKMld19aHH2BH2jPQJmEESyw/edit?usp=sharing)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
