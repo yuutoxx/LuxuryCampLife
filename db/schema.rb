@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_14_092454) do
+ActiveRecord::Schema.define(version: 2024_04_23_121750) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2024_04_14_092454) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.text "introduction"
-    t.boolean "is_active", default: true
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -68,16 +68,16 @@ ActiveRecord::Schema.define(version: 2024_04_14_092454) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "post_id"
+    t.integer "customer_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.text "comment"
-    t.integer "customer_id"
-    t.integer "post_id"
+    t.text "comment", null: false
+    t.integer "customer_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -93,19 +93,13 @@ ActiveRecord::Schema.define(version: 2024_04_14_092454) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "title"
-    t.text "body"
-    t.integer "price"
-    t.float "star"
+    t.integer "customer_id", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.integer "price", null: false
+    t.integer "star", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "score", precision: 5, scale: 3
-    t.string "address", default: "", null: false
-    t.float "latitude", default: 0.0, null: false
-    t.float "longitude", default: 0.0, null: false
-    t.float "lat"
-    t.float "lng"
   end
 
   create_table "tags", force: :cascade do |t|
