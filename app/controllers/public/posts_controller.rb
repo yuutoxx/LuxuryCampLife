@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
     @post.customer_id = current_customer.id
     # 受け取った値を、で区切って配列にする
     tag_list = params[:tag][:name].split('、')
-    if@post.save
+    if tags_valid?(tag_list) && @post.save
       @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "投稿が完了しました。"
     else
@@ -42,7 +42,7 @@ class Public::PostsController < ApplicationController
   def update
     @post.score = Language.get_data(post_params[:body]) #感情分析
     tag_list = params[:tag][:name].split('、')
-    if @post.update(post_params)
+    if tags_valid?(tag_list) && @post.update(post_params)
       @post.tags.destroy_all
       @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "投稿を更新しました。"
@@ -80,5 +80,10 @@ class Public::PostsController < ApplicationController
     unless @post.customer == current_customer
       redirect_to posts_path
     end
+  end
+
+  def tags_valid?(tags)
+    # タグが重複しているかどうかをチェック
+    tags.uniq.size == tags.size
   end
 end
