@@ -14,6 +14,8 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post), notice: "投稿が完了しました。"
     else
       flash.now[:alert] = "投稿に失敗しました。"
+      @posts = Post.all.order(params[:sort]).page(params[:page]).per(5)
+      @tag_list = Tag.all
       render 'index'
     end
   end
