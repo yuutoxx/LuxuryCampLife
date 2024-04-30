@@ -13,6 +13,7 @@ class Public::PostsController < ApplicationController
       @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "投稿が完了しました。"
     else
+      flash.now[:alert] = "投稿に失敗しました。"
       render 'index'
     end
   end
@@ -47,6 +48,7 @@ class Public::PostsController < ApplicationController
       @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "投稿を更新しました。"
     else
+      flash.now[:notice] = "投稿に失敗しました。"
       render "edit"
     end
   end
