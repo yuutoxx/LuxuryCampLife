@@ -9,6 +9,12 @@
       </div>
       <div class="col-md-7 offset-md-2">
         <% if @posts.present? %>
+          <div class="ml-2 mb-2">
+            <%= sort_link(@q, :'created_at desc', '新しい順', hide_indicator: true, class:'custom-link text-secondary') %> |
+            <%= sort_link(@q, :'created_at ASC', '古い順', hide_indicator: true, class:'custom-link text-secondary') %> |
+            <%= sort_link(@q, :'star DESC', '評価の高い順', hide_indicator: true, class:'custom-link text-secondary') %> |
+            <%= sort_link(@q, :'star ASC', '評価の低い順', hide_indicator: true, class:'custom-link text-secondary') %>
+          </div>
           <%= render 'index', posts: @posts %>
         <% else %>
           <p class='text-center'>投稿が見つかりませんでした</p>
