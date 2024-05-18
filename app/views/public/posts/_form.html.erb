@@ -21,7 +21,7 @@
   <% if post.id.nil? %>
     <div class='form-group d-flex' id='star'>
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
-      <div id='post_raty'></div><span class="badge badge-danger mt-2 ml-3">必須</span>
+      <div id='post_raty'></div><span class="badge badge-danger mt-2 mb-5 ml-3">必須</span>
     </div>
     <script>
       $(document).on('turbolinks:load', function(){
